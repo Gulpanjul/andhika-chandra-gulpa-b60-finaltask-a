@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="/css/navbar.css" />
+
+<nav class="navbar navbar-expand-lg glass-navbar fixed-top">
+    <div class="container">
+        <!-- Brand Logo & Name -->
+        <a class="navbar-brand d-flex align-items-center" href="/">
+            <div class="logo-container me-2">
+                <img src="/img/logo.png" alt="logo" width="40" class="glass-logo">
+            </div>
+            <span class="brand-text">HeroWiki</span>
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <!-- Nav Items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item mx-2">
+                    <a class="nav-link glass-nav-link {{#if (equal currentPage 'Home')}}active{{/if}}" href="/">
+                        <i class="bi bi-joystick me-1"></i>Heroes
+                    </a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link glass-nav-link {{#if (equal currentPage 'Type')}}active{{/if}}" href="/type-add">
+                        <i class="bi bi-tags me-1"></i>Types
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Right Navigation -->
+            <div class="d-flex align-items-center gap-3">
+                {{#if user}}
+                <div class="user-info d-flex align-items-center">
+                    <span class="user-greeting">Welcome, {{user.username}}</span>
+                </div>
+                <a href="/logout" class="btn glass-nav-link logout-btn">
+                    <i class="bi bi-box-arrow-right me-1"></i>Logout
+                </a>
+                {{else}}
+                <a href="/login" class="btn glass-nav-link login-btn">
+                    <i class="bi bi-box-arrow-in-right me-1"></i>Login
+                </a>
+                <a href="/register" class="btn glass-nav-link  register-btn">
+                    <i class="bi bi-person-plus me-1"></i>Register
+                </a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="/css/crud.css" />
+
+{{#> layout currentPage='Edit Hero'}}
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <form action="/{{hero.id}}/edit?_method=PATCH" method="post" enctype="multipart/form-data"
+        class="glass-form p-4 rounded shadow">
+        <h1 class="text-white text-center">Edit Hero</h1>
+        <input type="hidden" name="_method" value="PUT">
+
+        <!-- Hero Name -->
+        <div class="form-floating mb-3">
+            <input name="name" type="text" class="form-control glass-input" value="{{hero.name}}"
+                placeholder="Hero Name" required>
+            <label>Hero Name</label>
+        </div>
+
+        <!-- Type Selection -->
+        <div class="form-floating mb-3">
+            <select name="typeId" class="form-select glass-input" required>
+                <option value="">Select Type</option>
+                {{#each types}}
+                <option value="{{this.id}}" {{#if (equal this.id hero.typeId)}}selected{{/if}}>
+                    {{this.name}}
+                </option>
+                {{/each}}
+            </select>
+            <label>Hero Type</label>
+        </div>
+
+        <!-- Current Photo -->
+        <div class="mb-3">
+            <label class="text-white">Current Photo:</label>
+            <img src="{{hero.photo}}" class="img-thumbnail d-block mb-2" style="max-width: 200px;">
+            <input type="hidden" name="currentPhoto" value="{{hero.photo}}">
+        </div>
+
+        <!-- New Photo Upload -->
+        <div class="input-group">
+            <input name="photo" type="file" class="form-control" accept="image/*">
+        </div>
+        <small class="text-white-50 d-block mt-1 mb-3">Leave empty to keep current photo</small>
+
+        <div class="d-flex gap-3">
+            <button type="submit" class="glass-button flex-grow-1 py-2">Update Hero</button>
+            <a href="/" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{{/layout}}

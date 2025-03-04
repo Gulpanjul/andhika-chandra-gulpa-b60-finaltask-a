@@ -1,0 +1,33 @@
+{{!-- <link rel="stylesheet" href="/css/crud.css" /> --}}
+
+{{#> layout currentPage='Add Hero'}}
+<main class="container d-flex justify-content-center align-items-center mt-5">
+    <form action="/add" method="post" enctype="multipart/form-data" class="glass-form p-4 rounded shadow">
+        <h1 class="text-white text-center my-5">Add New Hero</h1>
+
+        <!-- Hero Name -->
+        <div class="form-floating mb-3">
+            <input name="name" type="text" class="form-control glass-input" placeholder="Hero Name" required>
+            <label>Hero Name</label>
+        </div>
+
+        <!-- Type Selection -->
+        <div class="form-floating mb-3">
+            <select name="typeId" class="form-select glass-input" required>
+                <option value="">Select Type</option>
+                {{#each types}}
+                <option value="{{this.id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+            <label>Hero Type</label>
+        </div>
+
+        <!-- Photo Upload -->
+        <div class="input-group mb-3">
+            <input name="photo" type="file" class="form-control" accept="image/*">
+        </div>
+
+        <button type="submit" class="glass-button w-100 py-2">Create Hero</button>
+    </form>
+</main>
+{{/layout}}

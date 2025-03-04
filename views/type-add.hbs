@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="/css/crud.css" />
+
+{{#> layout currentPage='Type Management'}}
+<main class="container py-5">
+    <!-- List Existing Types -->
+    <div class="container glass-card p-4 my-5">
+        <h2 class="text-white mb-4">Existing Types</h2>
+
+        {{#if types.length}}
+        <div class="row g-3">
+            {{#each types}}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="d-flex align-items-center justify-content-between glass-card p-3">
+                    <span class="text-white">{{this.name}}</span>
+                    {{#if user}}
+                    <form action="/type-add/{{this.id}}?_method=DELETE" method="post">
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Delete this type?')">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </form>
+                    {{/if}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <div class="text-center text-white-50 py-4">
+            <h4>No types found</h4>
+        </div>
+        {{/if}}
+    </div>
+
+    <!-- Add New Type Form -->
+    {{#if user}}
+    <div class="glass-card p-4">
+        <h2 class="text-white mb-4">Add New Type</h2>
+        <form action="/type-add" method="post" class="glass-form">
+            <div class="form-floating mb-3">
+                <input name="name" type="text" class="form-control glass-input" placeholder="Type Name" required>
+                <label>Type Name</label>
+            </div>
+
+            <div class="text-end">
+                <button type="submit" class="glass-button px-5">
+                    <i class="bi bi-plus-lg me-2"></i>Create Type
+                </button>
+            </div>
+        </form>
+    </div>
+    {{/if}}
+</main>
+
+{{/layout}}

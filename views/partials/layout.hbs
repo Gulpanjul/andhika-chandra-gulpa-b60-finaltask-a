@@ -1,0 +1,25 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Wiki Games</title>
+	<link rel="icon" href="/img/profile.jpg" />
+	<link rel="stylesheet" href="/css/background.css" />
+	{{!-- <link rel="stylesheet" href="/css/main.css" /> --}}
+	
+
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-icons.min.css">
+</head>
+
+<body class="m-0">
+	<div class="background-container">
+	</div>
+	{{> navbar currentPage=currentPage}}
+	{{> @partial-block }}
+
+	<script src="/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

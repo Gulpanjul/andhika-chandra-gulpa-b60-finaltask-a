@@ -1,0 +1,46 @@
+{{!-- <link rel="stylesheet" href="/css/hero-detail.css" /> --}}
+{{#> layout currentPage=hero.name}}
+
+<main class="hero-detail-container">
+	<!-- Hero Name -->
+	<h1 class="hero-detail-title">{{ hero.name }}</h1>
+
+	<!-- Meta Info -->
+	<div class="hero-detail-meta">
+		<span class="hero-type-badge">{{ hero.type.name }}</span> •
+		<span>Added by {{ hero.user.username }}</span>
+	</div>
+
+	<!-- Hero Image -->
+	<img src="{{ hero.photo }}" alt="{{ hero.name }}" class="hero-detail-image">
+
+	<!-- Hero Story -->
+	<div class="hero-detail-content text-justify">
+		Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae saepe accusantium ut qui, optio neque. Vero molestiae illum voluptatibus quis quibusdam sapiente eius voluptas. Exercitationem quam nulla similique praesentium doloribus illum labore dolor impedit ad necessitatibus optio libero ratione iste officiis tempora ipsam odio voluptatem eum corrupti reprehenderit eius repudiandae, quasi nostrum? Sequi architecto deserunt iusto soluta quaerat animi! Quia hic tempora facere esse sed fugiat ullam tenetur odio pariatur, officia repudiandae architecto reiciendis aliquid nostrum ipsum? Ipsa hic modi facilis neque perspiciatis perferendis odit explicabo exercitationem labore? Facilis nam et tempora culpa quod ipsa, ipsam repellendus iure perspiciatis doloremque?
+	</div>
+
+	<!-- Hero Stats -->
+	<div class="hero-stats">
+		<div class="stat-item">
+			<div class="stat-label">Attack Power</div>
+			<div class="stat-bar">
+				<div class="stat-fill" style="width: 60%"></div>
+			</div>
+		</div>
+
+		<div class="stat-item">
+			<div class="stat-label">Defense</div>
+			<div class="stat-bar">
+				<div class="stat-fill" style="width: 40%"></div>
+			</div>
+		</div>
+
+		<div class="stat-item">
+			<div class="stat-label">Speed</div>
+			<div class="stat-bar">
+				<div class="stat-fill" style="width: 50%"></div>
+			</div>
+		</div>
+	</div>
+</main>
+{{/ layout}}
