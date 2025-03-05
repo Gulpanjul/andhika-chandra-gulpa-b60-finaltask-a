@@ -80,13 +80,13 @@ app.post("/login", authLogin);
 
 
 app.get("/add", renderAddHero);
-app.post("/", upload.single("image"), addHero);
+app.post("/", upload.single("photo"), addHero);
 
 app.get("/type-add", renderAddType);
 app.post("/type-add", addType);
 
 app.get("/:id/edit", renderHeroEdit);
-app.patch("/:id", upload.single("image"), updateHero);
+app.patch("/:id", upload.single("photo"), updateHero);
 app.delete("/:id", deleteHero);
 app.delete("/type-add/:id", deleteType);
 app.get("/:id", renderHeroDetail);

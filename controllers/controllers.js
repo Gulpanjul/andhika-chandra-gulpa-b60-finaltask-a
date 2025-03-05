@@ -104,7 +104,7 @@ async function authLogin(req, res) {
 }
 
 async function authRegister(req, res) {
-	const { name, email, password, confirmPassword } = req.body; // object destructuring
+	const { username, email, password, confirmPassword } = req.body; // object destructuring
 
 	if (password !== confirmPassword) {
 		req.flash("error", "Password dan confirm password tidak sesuai.");
@@ -122,7 +122,7 @@ async function authRegister(req, res) {
 	const hashedPassword = await bcrypt.hash(password, saltRounds);
 
 	const newUser = {
-		name,
+		username,
 		email,
 		password: hashedPassword,
 	};

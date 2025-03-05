@@ -12,7 +12,7 @@ module.exports = {
 			name: {
 				type: Sequelize.STRING,
 			},
-      photo: {
+			photo: {
 				type: Sequelize.STRING,
 			},
 			typeId: {

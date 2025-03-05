@@ -4,7 +4,7 @@ const config = require("../config/config.json");
 const { Hero, Type, User } = require("../models");
 
 const sequelize = new Sequelize(config.development);
-async function  renderAddHero(req, res) {
+async function renderAddHero(req, res) {
 	const user = req.session.user;
 	const types = await Type.findAll();
 	res.render("hero-add", {
@@ -16,17 +16,18 @@ async function  renderAddHero(req, res) {
 async function addHero(req, res) {
 	const user = req.session.user;
 
-	// if (!user) {
-	// 	req.flash("error", "Please login");
-	// 	return res.redirect("/login");
-	// }
+	if (!user) {
+		req.flash("error", "Please login");
+		return res.redirect("/login");
+	}
 
-	const { name, typeId } = req.body;
+	const { name } = req.body;
+	const typeId = parseInt(req.body.typeId);
 
 	let imageFileName = "/image/no-image.jpg";
 
 	if (req.file) {
-		imageFileName = req.file.path;
+		imageFileName = "/" + req.file.path.replace(/\\/g, "/");
 	}
 
 	await Hero.create({
@@ -99,7 +100,7 @@ async function updateHero(req, res) {
 		photo: photoPath,
 	});
 
-    res.redirect("/");
+	res.redirect("/");
 }
 
 async function deleteHero(req, res) {
@@ -110,19 +111,19 @@ async function deleteHero(req, res) {
 	}
 
 	// Delete photo
-	if (hero.photo && hero.photo !== "/img/default-hero.jpg") {
-		fs.unlinkSync(path.join(__dirname, "../public", hero.photo));
-	}
+	// if (hero.photo && hero.photo !== "/img/default-hero.jpg") {
+	// 	fs.unlinkSync(path.join(__dirname, "../public", hero.photo));
+	// }
 
 	await hero.destroy();
 	res.redirect("/");
 }
 
 module.exports = {
-    renderAddHero,
-    addHero,
-    renderHeroDetail,
-    renderHeroEdit,
-    updateHero,
-    deleteHero,
+	renderAddHero,
+	addHero,
+	renderHeroDetail,
+	renderHeroEdit,
+	updateHero,
+	deleteHero,
 };

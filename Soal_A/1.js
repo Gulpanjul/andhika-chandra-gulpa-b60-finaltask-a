@@ -1,13 +1,12 @@
 function isPrime(num) {
-    if (num < 2) return false; // Angka < 2 bukan prima
+    if (num < 2) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {
-        if (num % i === 0) return false; // Cek pembagian
+        if (num % i === 0) return false;
     }
-    return true; // Jika lolos semua, berarti prima
+    return true;
 }
 
 function drawSikuSiku(alasTinggi) {
-    // 1. Kumpulkan semua bilangan prima yang diperlukan
     const primes = [];
     let num = 2;
     while (primes.length < (alasTinggi * (alasTinggi + 1)) / 2) {
@@ -15,14 +14,13 @@ function drawSikuSiku(alasTinggi) {
         num++;
     }
     
-    // 2. Cetak per baris
     let index = 0;
     for (let baris = 1; baris <= alasTinggi; baris++) {
         let line = "";
         for (let kolom = 0; kolom < baris; kolom++) {
-            line += primes[index++] + " "; // Ambil angka prima urut
+            line += primes[index++] + " ";
         }
-        console.log(line.trim()); // Hapus spasi terakhir
+        console.log(line.trim());
     }
 }
 
